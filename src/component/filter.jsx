@@ -34,6 +34,12 @@ const FilterLinkView = ({
 		</a>
 	)
 }
+FilterLinkView.propTypes = {
+	filter : React.PropTypes.string.isRequired ,
+	selectedFilter : React.PropTypes.string.isRequired ,
+	onFilterLinkClick : React.PropTypes.func.isRequired ,
+	children : React.PropTypes.node.isRequired
+}
 
 const FilterLink = connect(mapStateToProps,mapDispatcherToProps)(FilterLinkView) ;
 export default FilterLink ;

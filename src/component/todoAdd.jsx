@@ -21,6 +21,9 @@ const TodoAddView = ({
 	)
 
 }
+TodoAddView.propTypes = {
+	addTodoOnClick : React.PropTypes.func.isRequired
+}
 
 const mapDispatcherToProps = function(dispatch){
 	return {

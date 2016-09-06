@@ -56,11 +56,11 @@
 	
 	var _todoApp2 = _interopRequireDefault(_todoApp);
 	
-	var _appStore = __webpack_require__(14);
+	var _appStore = __webpack_require__(15);
 	
 	var _appStore2 = _interopRequireDefault(_appStore);
 	
-	var _reactRedux = __webpack_require__(19);
+	var _reactRedux = __webpack_require__(7);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -104,11 +104,11 @@
 	
 	var _todoAdd2 = _interopRequireDefault(_todoAdd);
 	
-	var _todoList = __webpack_require__(7);
+	var _todoList = __webpack_require__(8);
 	
 	var _todoList2 = _interopRequireDefault(_todoList);
 	
-	var _footer = __webpack_require__(9);
+	var _footer = __webpack_require__(10);
 	
 	var _footer2 = _interopRequireDefault(_footer);
 	
@@ -166,7 +166,7 @@
 	
 	var _todoAction = __webpack_require__(5);
 	
-	var _reactRedux = __webpack_require__(19);
+	var _reactRedux = __webpack_require__(7);
 	
 	var TodoAddView = function TodoAddView(_ref) {
 		var addTodoOnClick = _ref.addTodoOnClick;
@@ -186,6 +186,9 @@
 					input.value = '';
 				} })
 		);
+	};
+	TodoAddView.propTypes = {
+		addTodoOnClick: React.PropTypes.func.isRequired
 	};
 	
 	var mapDispatcherToProps = function mapDispatcherToProps(dispatch) {
@@ -249,6 +252,12 @@
 
 /***/ },
 /* 7 */
+/***/ function(module, exports) {
+
+	module.exports = ReactRedux;
+
+/***/ },
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -261,11 +270,11 @@
 	
 	var _todoAction = __webpack_require__(5);
 	
-	var _filteroption = __webpack_require__(8);
+	var _filteroption = __webpack_require__(9);
 	
 	var _filteroption2 = _interopRequireDefault(_filteroption);
 	
-	var _reactRedux = __webpack_require__(19);
+	var _reactRedux = __webpack_require__(7);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -309,6 +318,15 @@
 		);
 	};
 	
+	TodoView.propTypes = {
+		todos: React.PropTypes.arrayOf(React.PropTypes.shape({
+			id: React.PropTypes.number.isRequired,
+			completed: React.PropTypes.bool.isRequired,
+			text: React.PropTypes.string.isRequired
+		}).isRequired).isRequired,
+		onTodoClick: React.PropTypes.func.isRequired
+	};
+	
 	var mapStateToProps = function mapStateToProps(state) {
 		return {
 			todos: getTodoList(state)
@@ -326,7 +344,7 @@
 	exports.default = TodoList;
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -344,7 +362,7 @@
 	exports.default = FilterOption;
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -357,11 +375,11 @@
 	
 	var _react = __webpack_require__(1);
 	
-	var _filter = __webpack_require__(10);
+	var _filter = __webpack_require__(11);
 	
 	var _filter2 = _interopRequireDefault(_filter);
 	
-	var _filterOption = __webpack_require__(13);
+	var _filterOption = __webpack_require__(14);
 	
 	var _filterOption2 = _interopRequireDefault(_filterOption);
 	
@@ -415,7 +433,7 @@
 	exports.default = Footer;
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -426,11 +444,11 @@
 	
 	var _react = __webpack_require__(1);
 	
-	var _filterAction = __webpack_require__(11);
+	var _filterAction = __webpack_require__(12);
 	
 	var _filterAction2 = _interopRequireDefault(_filterAction);
 	
-	var _reactRedux = __webpack_require__(19);
+	var _reactRedux = __webpack_require__(7);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -470,12 +488,18 @@
 			children
 		);
 	};
+	FilterLinkView.propTypes = {
+		filter: React.PropTypes.string.isRequired,
+		selectedFilter: React.PropTypes.string.isRequired,
+		onFilterLinkClick: React.PropTypes.func.isRequired,
+		children: React.PropTypes.node.isRequired
+	};
 	
 	var FilterLink = (0, _reactRedux.connect)(mapStateToProps, mapDispatcherToProps)(FilterLinkView);
 	exports.default = FilterLink;
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -484,7 +508,7 @@
 		value: true
 	});
 	
-	var _filterConstant = __webpack_require__(12);
+	var _filterConstant = __webpack_require__(13);
 	
 	var _filterConstant2 = _interopRequireDefault(_filterConstant);
 	
@@ -500,7 +524,7 @@
 	exports.default = FilterAction;
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -516,7 +540,7 @@
 	exports.default = FilterConstant;
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -534,7 +558,7 @@
 	exports.default = FilterOption;
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -543,9 +567,9 @@
 	  value: true
 	});
 	
-	var _redux = __webpack_require__(15);
+	var _redux = __webpack_require__(16);
 	
-	var _todoAppReducer = __webpack_require__(16);
+	var _todoAppReducer = __webpack_require__(17);
 	
 	var _todoAppReducer2 = _interopRequireDefault(_todoAppReducer);
 	
@@ -556,13 +580,13 @@
 	exports.default = store;
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	module.exports = Redux;
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -571,11 +595,11 @@
 		value: true
 	});
 	
-	var _todoReducer = __webpack_require__(17);
+	var _todoReducer = __webpack_require__(18);
 	
 	var _todoReducer2 = _interopRequireDefault(_todoReducer);
 	
-	var _filterReducer = __webpack_require__(18);
+	var _filterReducer = __webpack_require__(19);
 	
 	var _filterReducer2 = _interopRequireDefault(_filterReducer);
 	
@@ -595,7 +619,7 @@
 	exports.default = TodoAppReducer;
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -657,7 +681,7 @@
 	exports.default = TodoReducer;
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -666,11 +690,11 @@
 		value: true
 	});
 	
-	var _filterConstant = __webpack_require__(12);
+	var _filterConstant = __webpack_require__(13);
 	
 	var _filterConstant2 = _interopRequireDefault(_filterConstant);
 	
-	var _filterOption = __webpack_require__(13);
+	var _filterOption = __webpack_require__(14);
 	
 	var _filterOption2 = _interopRequireDefault(_filterOption);
 	
@@ -695,12 +719,6 @@
 	};
 	
 	exports.default = FilterReducer;
-
-/***/ },
-/* 19 */
-/***/ function(module, exports) {
-
-	module.exports = ReactRedux;
 
 /***/ }
 /******/ ]);
